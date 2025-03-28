@@ -74,13 +74,14 @@
             display: flex;
             justify-content: center;
             min-width: 300px;
+            max-width: 400px; /* Added max-width constraint */
         }
         
         .hero-image img {
-            max-width: 100%;
+            width: 100%; /* Changed from max-width to width */
             height: auto;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem; /* Reduced border radius */
+            /* Removed box-shadow */
         }
         
         h1 {
@@ -397,6 +398,11 @@
             
             .features-list {
                 grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                max-width: 280px; /* Smaller on mobile */
+                margin: 0 auto;
             }
         }
     </style>
