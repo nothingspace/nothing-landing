@@ -9,611 +9,1301 @@
     <link rel="manifest" href="/site.webmanifest">
     <title>Nothing: Notes, Tasks, AI</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+        
+        :root {
+            --cream: #fefdf8;
+            --warm-white: #faf9f4;
+            --sage: #9caf88;
+            --forest: #5d7c5a;
+            --terracotta: #e67e22;
+            --coral: #ff6b6b;
+            --lavender: #a29bfe;
+            --soft-gray: #636e72;
+            --light-gray: #ddd;
+            --brown: #6c5ce7;
+            --gold: #fdcb6e;
+        }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
         
         body {
-            background-color: #e6f2f5;
-            color: #111;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--cream);
+            color: var(--soft-gray);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        section {
-            scroll-margin-top: 2rem;
-        }
-        
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        header {
-            margin-bottom: 2rem;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        
-        .tagline {
-            color: #666;
-            margin-top: 0.3rem;
-        }
-        
-        .hero {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            gap: 2rem;
-            flex: 1;
-        }
-        
-        .hero-content {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            min-width: 300px;
-            max-width: 400px; /* Added max-width constraint */
-        }
-        
-        .hero-image img {
-            width: 100%; /* Changed from max-width to width */
-            height: auto;
-            border-radius: 1rem; /* Reduced border radius */
-            /* Removed box-shadow */
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        p.description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .app-features {
-            margin: 5rem 0;
-            padding: 3rem 0;
-            position: relative;
-        }
-        
-        .app-features::before {
-            content: '';
-            position: absolute;
+        /* Organic Background Shapes - Behind content */
+        .bg-shapes {
+            position: fixed;
             top: 0;
-            left: -100vw;
-            right: -100vw;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(230, 242, 245, 0), rgba(220, 237, 245, 0.5), rgba(230, 242, 245, 0));
-            z-index: -1;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-        }
-        
-        h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, #4a90e2, #50e3c2);
-            margin: 0.8rem auto 0;
-            border-radius: 2px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            z-index: -2;
             overflow: hidden;
         }
         
-        .feature::before {
+        .shape {
+            position: absolute;
+            border-radius: 50% 30% 70% 40%;
+            opacity: 0.08;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 280px;
+            height: 350px;
+            background: var(--sage);
+            top: 15%;
+            left: -8%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 180px;
+            height: 220px;
+            background: var(--coral);
+            top: 65%;
+            right: -3%;
+            animation-delay: 8s;
+        }
+        
+        .shape-3 {
+            width: 120px;
+            height: 160px;
+            background: var(--lavender);
+            bottom: 25%;
+            left: 45%;
+            animation-delay: 15s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                border-radius: 50% 30% 70% 40%;
+            }
+            25% {
+                transform: translate(20px, -20px) rotate(3deg);
+                border-radius: 30% 70% 50% 60%;
+            }
+            50% {
+                transform: translate(-15px, -35px) rotate(-2deg);
+                border-radius: 70% 40% 30% 50%;
+            }
+            75% {
+                transform: translate(25px, -15px) rotate(1deg);
+                border-radius: 40% 60% 70% 30%;
+            }
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(254, 253, 248, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(156, 175, 136, 0.15);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--forest);
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '✨';
+            position: absolute;
+            top: -5px;
+            right: -25px;
+            font-size: 0.9rem;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        .tagline {
+            font-size: 0.75rem;
+            color: var(--sage);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--soft-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--sage);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 6rem;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-content h1::before {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: -10px;
             left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, #4a90e2, #50e3c2);
-            border-radius: 5px 0 0 5px;
+            width: 45%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage), var(--coral));
+            border-radius: 10px;
+            opacity: 0.4;
+            z-index: -1;
         }
         
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--soft-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 90%;
         }
         
-        .feature h3 {
-            margin-bottom: 1rem;
-            color: #222;
-            font-size: 1.3rem;
-        }
-        
-        .feature p {
-            color: #666;
-            font-size: 1rem;
-            line-height: 1.5;
+        .download-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
         
         .download-buttons {
             display: flex;
             gap: 1rem;
-            margin: 2rem 0;
             flex-wrap: wrap;
-            justify-content: flex-start;
         }
         
-        .download-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8rem 1.5rem;
-            background-color: #1a1a1a;
-            border-radius: 1rem;
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 200px;
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
-        }
-        
-        .download-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            background-color: #000;
-        }
-        
-        .store-icon {
-            height: 24px;
-            margin-right: 0.5rem;
-        }
-        
-        footer {
-            margin-top: auto;
-            padding: 1.5rem 0;
-            display: flex;
-            justify-content: space-between;
+            transition: all 0.2s ease;
+            display: inline-flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            background-color: #f5f9fa;
+            gap: 0.75rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            min-width: 180px;
+            justify-content: center;
         }
         
-        footer > div {
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.3s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Hero Section Buttons - Both have background */
+        .hero .btn-primary {
+            background: linear-gradient(135deg, var(--sage), var(--forest));
+            color: white;
+            box-shadow: 0 4px 15px rgba(156, 175, 136, 0.3);
+            border: 2px solid var(--sage);
+        }
+        
+        .hero .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(156, 175, 136, 0.4);
+            background: linear-gradient(135deg, var(--forest), var(--sage));
+            border-color: var(--forest);
+        }
+        
+        .hero .btn-secondary {
+            background: linear-gradient(135deg, var(--sage), var(--forest));
+            color: white;
+            border: 2px solid var(--sage);
+            box-shadow: 0 4px 15px rgba(156, 175, 136, 0.3);
+        }
+        
+        .hero .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--forest), var(--sage));
+            border-color: var(--forest);
+            box-shadow: 0 8px 25px rgba(156, 175, 136, 0.4);
+        }
+        
+        /* CTA Section Buttons - Both white background */
+        .cta .btn-primary {
+            background: white;
+            color: var(--sage);
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--forest);
+            border-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta .btn-secondary {
+            background: white;
+            color: var(--sage);
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--forest);
+            border-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Remove unused CTA button styles */
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .phone-container {
+            position: relative;
+            max-width: 320px;
+            width: 100%;
+            z-index: 15;
+        }
+        
+        .phone-frame {
+            position: relative;
+            background: white;
+            padding: 1.2rem;
+            border-radius: 2.5rem;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(156, 175, 136, 0.1);
+            transform: rotate(-3deg);
+            transition: transform 0.5s ease;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        .phone-frame:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--sage), var(--coral), var(--lavender));
+            border-radius: 2.7rem;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        
+        .phone-image {
+            width: 100%;
+            height: auto;
+            border-radius: 1.8rem;
+            display: block;
+            object-fit: cover;
+        }
+        
+        /* Restore decorative circles around image */
+        .decorative-elements {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            pointer-events: none;
+            z-index: 1;
+            top: -10%;
+            left: -10%;
+        }
+        
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            animation: bounce 4s ease-in-out infinite;
+        }
+        
+        .deco-1 {
+            width: 20px;
+            height: 20px;
+            background: var(--coral);
+            top: 5%;
+            left: 5%;
+            opacity: 0.3;
+            animation-delay: 0s;
+        }
+        
+        .deco-2 {
+            width: 18px;
+            height: 18px;
+            background: var(--lavender);
+            bottom: 10%;
+            right: 8%;
+            opacity: 0.4;
+            animation-delay: 2s;
+        }
+        
+        .deco-3 {
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            top: 50%;
+            left: -5%;
+            opacity: 0.3;
+            animation-delay: 3s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 2rem;
         }
         
-        footer a {
-            color: #555;
-            text-decoration: none;
-            margin-left: 1.5rem;
-            transition: color 0.2s;
-            font-weight: 500;
-            position: relative;
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
         
-        footer a::after {
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--sage), var(--forest));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--soft-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--warm-white);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            font-size: 1rem;
+            color: var(--soft-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .feature-highlight {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            padding: 3rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(156, 175, 136, 0.1);
+        }
+        
+        .feature-highlight::before {
             content: '';
             position: absolute;
-            bottom: -5px;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, #4a90e2, #50e3c2);
-            transition: width 0.3s;
-        }
-        
-        footer a:hover {
-            color: #111;
-        }
-        
-        footer a:hover::after {
             width: 100%;
-        }
-        
-        /* Final About Section Design */
-        .about-section {
-            margin: 5rem auto;
-            max-width: 900px;
-            background-color: white;
-            padding: 4rem;
-            border-radius: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            position: relative;
-            text-align: center;
-        }
-        
-        .about-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #111;
-            position: relative;
-            text-align: center;
-        }
-        
-        .about-section h2::after {
-            content: '';
-            display: block;
-            width: 100px;
             height: 4px;
-            background: linear-gradient(to right, #4a90e2, #50e3c2);
-            margin: 1rem auto 2rem;
-            border-radius: 2px;
+            background: linear-gradient(90deg, var(--sage), var(--coral), var(--lavender), var(--gold));
         }
         
-        .about-section p {
-            margin-bottom: 1.8rem;
+        .feature-highlight::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(156, 175, 136, 0.03) 0%, transparent 70%);
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--sage), var(--forest));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-size: 1.2rem;
-            line-height: 1.7;
-            color: #444;
-            max-width: 750px;
+            flex-shrink: 0;
+        }
+        
+        .feature-highlight h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--forest);
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .benefit-list li {
+            font-size: 1rem;
+            color: var(--soft-gray);
+            margin-bottom: 1rem;
+            padding-left: 2.5rem;
+            position: relative;
+            padding: 0.75rem 0 0.75rem 2.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(156, 175, 136, 0.1);
+        }
+        
+        .benefit-list li:hover {
+            background: rgba(156, 175, 136, 0.08);
+            transform: translateX(3px);
+            border-color: rgba(156, 175, 136, 0.2);
+        }
+        
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            top: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--sage);
+            width: 20px;
+            height: 20px;
+            background: rgba(156, 175, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+        
+        /* Features Section */
+        .features {
+            background: var(--cream);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--sage);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--sage), var(--forest));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.3rem;
+            position: relative;
+        }
+        
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: var(--soft-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--forest) 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: drift 25s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta h2 {
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
         
-        .about-section p:last-child {
-            font-weight: 500;
-            color: #222;
-            margin-bottom: 0;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
-        /* Final Features Design */
-        .app-features {
-            margin: 5rem 0;
-            padding: 3rem 0;
+        .btn-cta {
+            background: white;
+            color: var(--forest);
+            border: 2px solid white;
         }
         
-        .app-features h2 {
-            font-size: 2.5rem;
+        .btn-cta:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--forest);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
             margin-bottom: 2rem;
-            color: #111;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
             text-align: center;
         }
         
-        .app-features h2::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, #4a90e2, #50e3c2);
-            margin: 1rem auto 3rem;
-            border-radius: 2px;
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.85rem;
         }
         
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .feature-item {
-            background-color: white;
-            padding: 1.5rem 2rem 1.5rem 4rem;
-            border-radius: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            transition: transform 0.2s ease-in-out;
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
+            background: rgba(93, 124, 90, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            display: none;
         }
         
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        .feature-dot {
-            position: absolute;
-            left: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
-            background: linear-gradient(135deg, #4a90e2, #50e3c2);
-            border-radius: 50%;
-        }
-        
-        .feature-content {
-            flex: 1;
-        }
-        
-        .feature-item h3 {
-            margin-bottom: 0.5rem;
-            color: #111;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .feature-item p {
-            color: #666;
-            font-size: 1.05rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Alert Styles */
-        .coming-soon-alert {
+        .modal {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 1.5rem 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            text-align: center;
-            display: none;
+            background: white;
+            border-radius: 2rem;
+            padding: 3rem;
             max-width: 90%;
             width: 400px;
-        }
-        
-        .coming-soon-alert h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #111;
-        }
-        
-        .coming-soon-alert p {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-        
-        .alert-button {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(to right, #4a90e2, #50e3c2);
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        
-        .alert-button:hover {
-            opacity: 0.9;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            z-index: 1000;
             display: none;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
-
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
+        
+        .modal h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 1rem;
+        }
+        
+        .modal p {
+            color: var(--soft-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
             }
             
-            h1 {
-                font-size: 2.5rem;
+            .hero-content h1::before {
+                left: 50%;
+                transform: translateX(-50%);
             }
             
             .download-buttons {
                 justify-content: center;
             }
             
-            footer {
-                flex-direction: column;
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
             }
             
-            footer a {
-                margin: 0.5rem;
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .features-list {
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .features-grid {
                 grid-template-columns: 1fr;
             }
             
-            .hero-image {
-                max-width: 280px; /* Smaller on mobile */
-                margin: 0 auto;
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .hero-container {
+                padding: 0 1.5rem;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .phone-frame {
+                padding: 1rem;
+                border-radius: 2rem;
+            }
+            
+            .modal {
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <section class="hero-section">
-            <header>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
                 <div class="logo">NOTHING</div>
                 <div class="tagline">Powered by AI</div>
-            </header>
-            
-            <div class="hero">
-                <div class="hero-content">
-                    <h1>Effortless note-taking with AI intelligence.</h1>
-                    <p class="description">Stay organized with powerful AI note-taking. Create tasks, get smart suggestions, search easily, and secure your information - all in one clean, intuitive interface.</p>
+            </div>
+            <nav class="nav">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#download" class="nav-link">Download</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Effortless note-taking with AI intelligence</h1>
+                <p class="hero-subtitle">Stay organized with powerful AI note-taking. Create tasks, get smart suggestions, search easily, and secure your information—all in one clean, intuitive interface.</p>
                 
-                <div class="download-buttons">
-                    <div id="appStoreButton" class="download-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16" class="store-icon">
+                <div class="download-section">
+                    <div class="download-buttons">
+                        <button id="appStoreButton" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+                            </svg>
+                            App Store
+                        </button>
+                        <a href="https://play.google.com/store/apps/details?id=live.nothingapp" target="_blank" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295ZM1 13.396V2.603L6.846 8 1 13.396ZM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z"/>
+                            </svg>
+                            Google Play
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="decorative-elements">
+                    <div class="deco-circle deco-1"></div>
+                    <div class="deco-circle deco-2"></div>
+                    <div class="deco-circle deco-3"></div>
+                </div>
+                <div class="phone-container">
+                    <div class="phone-frame">
+                        <img src="app-screenshot.png" alt="Nothing App Interface" class="phone-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">About Nothing</span>
+                <h2 class="section-title">Your personal AI assistant</h2>
+                <p class="section-subtitle">A powerful note-taking and task management app that combines simplicity with AI intelligence to help you stay organized and productive.</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Smart & Simple Organization</h3>
+                    <p>Whether you're making shopping lists, taking meeting notes, or tracking deadlines, Nothing simplifies your daily organization with AI assistance that truly understands your needs.</p>
+                    <p>Our intelligent system learns from your habits and suggests better ways to organize your thoughts, making note-taking feel effortless and natural.</p>
+                </div>
+                
+                <div class="feature-highlight">
+                    <div class="highlight-header">
+                        <div class="highlight-icon">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h4>Why people love Nothing</h4>
+                    </div>
+                    <ul class="benefit-list">
+                        <li>AI-powered smart suggestions</li>
+                        <li>Beautiful, intuitive design</li>
+                        <li>Privacy-first approach</li>
+                        <li>Cross-platform sync</li>
+                        <li>Advanced search capabilities</li>
+                        <li>Collaborative features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Key Features</span>
+                <h2 class="section-title">Everything you need to stay organized</h2>
+                <p class="section-subtitle">Discover the powerful features that make Nothing the perfect companion for your daily productivity and organization needs.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                    <h3>AI-Powered Notes</h3>
+                    <p>Get intelligent suggestions and organize information effortlessly with our advanced AI assistant that learns your preferences.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-check-square"></i>
+                    </div>
+                    <h3>Smart Task Management</h3>
+                    <p>Create color-coded priorities with deadline tracking and smart reminders that keep you on top of your goals.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-folder-plus"></i>
+                    </div>
+                    <h3>Powerful Organization</h3>
+                    <p>Simple design with robust organization features that adapt to your workflow and help you stay focused.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-chat-dots"></i>
+                    </div>
+                    <h3>Intelligent Assistant</h3>
+                    <p>Ask questions and get real-time recommendations based on your content and personal productivity patterns.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <h3>Complete Search</h3>
+                    <p>Quick access to all your important information in one place with powerful search that understands context.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-image"></i>
+                    </div>
+                    <h3>Multimedia Support</h3>
+                    <p>Powerful editor with attachment capabilities for rich content creation including images, links, and files.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-cloud-check"></i>
+                    </div>
+                    <h3>Cloud Sync</h3>
+                    <p>Backup your notes to Google Drive and access them anywhere, anytime across all your devices seamlessly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h3>Privacy Protection</h3>
+                    <p>Secure your information with app lock and content masking features that keep your data safe and private.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="download">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to transform your productivity?</h2>
+                <p>Join thousands of users who have already discovered the joy of effortless organization with Nothing.</p>
+                
+                <div class="cta-buttons">
+                    <button id="appStoreButtonCTA" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
                         </svg>
                         App Store
-                    </div>
-                    <a href="https://play.google.com/store/apps/details?id=live.nothingapp" target="_blank" class="download-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16" class="store-icon">
+                    </button>
+                    <a href="https://play.google.com/store/apps/details?id=live.nothingapp" target="_blank" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295ZM1 13.396V2.603L6.846 8 1 13.396ZM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z"/>
                         </svg>
                         Google Play
                     </a>
                 </div>
             </div>
-            
-            <div class="hero-image">
-                <img src="app-screenshot.png" alt="Nothing App Interface Screenshot">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>NOTHING</h3>
+                    <p>Effortless note-taking with AI intelligence. Stay organized, stay productive, and discover the joy of simple, powerful organization.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
+                        <li><a href="mailto:contact@nothingapp.live">Contact Us</a></li>
+                    </ul>
+                </div>
             </div>
-        </section>
-        </section>
-        
-        <section class="about-section" id="about">
-            <h2>About Nothing</h2>
-            <p>Nothing is a powerful note-taking and task management app that combines simplicity with AI intelligence to help you stay organized.</p>
-            <p>Whether you're making shopping lists, taking meeting notes, or tracking deadlines, Nothing simplifies your daily organization with AI assistance that understands your needs.</p>
-            <p>Download Nothing today and discover effortless note-taking with AI intelligence!</p>
-        </section>
-        
-        <section class="app-features" id="features">
-            <h2>Key Features</h2>
-            <div class="features-list">
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>AI-Powered Notes</h3>
-                        <p>Get intelligent suggestions and organize information effortlessly</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>Smart Task Management</h3>
-                        <p>Create color-coded priorities with deadline tracking</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>Powerful Organization</h3>
-                        <p>Simple design with robust organization features</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>Intelligent Assistant</h3>
-                        <p>Ask questions and get real-time recommendations based on your content</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>Complete Search</h3>
-                        <p>Quick access to all your important information in one place</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>Multimedia Support</h3>
-                        <p>Powerful editor with attachment capabilities</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>Cloud Sync</h3>
-                        <p>Backup your notes to Google Drive</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-dot"></div>
-                    <div class="feature-content">
-                        <h3>Privacy Protection</h3>
-                        <p>Secure your information with app lock and content masking</p>
-                    </div>
-                </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nothing. Made with ❤️ for productivity lovers everywhere.</p>
             </div>
         </div>
-        
-        <footer>
-            <div>
-                <span>© 2025 NOTHING</span>
-            </div>
-            <div>
-                <a href="privacy.html" target="_blank">Privacy policy</a>
-                <a href="mailto:contact@nothingapp.live">Contact us</a>
-            </div>
-        </footer>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="comingSoonModal">
+        <h3>Coming Soon! 🎉</h3>
+        <p>The iOS version of Nothing is currently in development and will be available on the App Store soon. We're putting the finishing touches on making it perfect for you!</p>
+        <button class="btn btn-primary" id="closeModalButton">Got it!</button>
     </div>
-    
-    <!-- Coming Soon Alert -->
-    <div class="overlay" id="overlay"></div>
-    <div class="coming-soon-alert" id="comingSoonAlert">
-        <h3>Coming Soon!</h3>
-        <p>The iOS version of Nothing is currently in development and will be available on the App Store soon. Stay tuned for updates!</p>
-        <button class="alert-button" id="closeAlertButton">Close</button>
-    </div>
-    
+
     <script>
-        // Get elements
-        const appStoreButton = document.getElementById('appStoreButton');
-        const overlay = document.getElementById('overlay');
-        const comingSoonAlert = document.getElementById('comingSoonAlert');
-        const closeAlertButton = document.getElementById('closeAlertButton');
+        // Modal functionality
+        const appStoreButtons = [
+            document.getElementById('appStoreButton'),
+            document.getElementById('appStoreButtonCTA')
+        ];
+        const modalOverlay = document.getElementById('modalOverlay');
+        const comingSoonModal = document.getElementById('comingSoonModal');
+        const closeModalButton = document.getElementById('closeModalButton');
         
-        // Show alert when App Store button is clicked
-        appStoreButton.addEventListener('click', function() {
-            overlay.style.display = 'block';
-            comingSoonAlert.style.display = 'block';
+        function showModal() {
+            modalOverlay.style.display = 'block';
+            comingSoonModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideModal() {
+            modalOverlay.style.display = 'none';
+            comingSoonModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Add event listeners to all App Store buttons
+        appStoreButtons.forEach(button => {
+            if (button) {
+                button.addEventListener('click', showModal);
+            }
         });
         
-        // Hide alert when Close button is clicked
-        closeAlertButton.addEventListener('click', function() {
-            overlay.style.display = 'none';
-            comingSoonAlert.style.display = 'none';
+        closeModalButton.addEventListener('click', hideModal);
+        modalOverlay.addEventListener('click', hideModal);
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                hideModal();
+            }
         });
         
-        // Also hide alert when clicking outside the alert box
-        overlay.addEventListener('click', function() {
-            overlay.style.display = 'none';
-            comingSoonAlert.style.display = 'none';
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
+        
+        // Parallax effect for background shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.05;
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            
+            // Parallax for decorative circles
+            const decoCircles = document.querySelectorAll('.deco-circle');
+            decoCircles.forEach((circle, index) => {
+                const speed = (index + 1) * 0.03;
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        }, observerOptions);
+        
+        // Animate elements on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.feature-card, .feature-highlight');
+            animateElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px) scale(0.95)';
+                element.style.transition = `all 0.3s ease ${index * 0.03}s`;
+                observer.observe(element);
+            });
+            
+            // Add hover sound effect simulation
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.animation = 'none';
+                    button.offsetHeight; // Trigger reflow
+                    button.style.animation = 'buttonPulse 0.3s ease';
+                });
+            });
+        });
+        
+        // Add button pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes buttonPulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
