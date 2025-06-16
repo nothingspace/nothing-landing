@@ -30,6 +30,25 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* Remove tap highlight on mobile */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Allow text selection for readable content */
+        p, h1, h2, h3, h4, h5, h6, span {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        
+        html {
+            overflow-x: hidden;
         }
         
         body {
@@ -40,69 +59,22 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* Organic Background Shapes - Behind content */
-        .bg-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
+            max-width: 100vw;
+            /* Initial hidden state for page load animation */
+            opacity: 0;
+            animation: pageLoad 0.8s ease-out forwards;
         }
         
-        .shape {
-            position: absolute;
-            border-radius: 50% 30% 70% 40%;
-            opacity: 0.08;
-            animation: float 25s ease-in-out infinite;
-        }
-        
-        .shape-1 {
-            width: 280px;
-            height: 350px;
-            background: var(--sage);
-            top: 15%;
-            left: -8%;
-            animation-delay: 0s;
-        }
-        
-        .shape-2 {
-            width: 180px;
-            height: 220px;
-            background: var(--coral);
-            top: 65%;
-            right: -3%;
-            animation-delay: 8s;
-        }
-        
-        .shape-3 {
-            width: 120px;
-            height: 160px;
-            background: var(--lavender);
-            bottom: 25%;
-            left: 45%;
-            animation-delay: 15s;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-                border-radius: 50% 30% 70% 40%;
+        /* Page load animation */
+        @keyframes pageLoad {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            25% {
-                transform: translate(20px, -20px) rotate(3deg);
-                border-radius: 30% 70% 50% 60%;
-            }
-            50% {
-                transform: translate(-15px, -35px) rotate(-2deg);
-                border-radius: 70% 40% 30% 50%;
-            }
-            75% {
-                transform: translate(25px, -15px) rotate(1deg);
-                border-radius: 40% 60% 70% 30%;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
@@ -114,6 +86,17 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(156, 175, 136, 0.15);
+            /* Header animation */
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideDown 0.6s ease-out 0.2s forwards;
+        }
+        
+        @keyframes slideDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .header-content {
@@ -189,6 +172,7 @@
             background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
             position: relative;
             z-index: 1;
+            width: 100%;
         }
         
         .hero-container {
@@ -199,6 +183,21 @@
             grid-template-columns: 1.1fr 0.9fr;
             gap: 4rem;
             align-items: center;
+            width: 100%;
+        }
+        
+        .hero-content {
+            /* Hero content animation */
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInLeft 0.8s ease-out 0.4s forwards;
+        }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .hero-content h1 {
@@ -261,6 +260,17 @@
             overflow: hidden;
             min-width: 180px;
             justify-content: center;
+            /* Remove default button styles and focus outline */
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        /* Remove focus styles on mobile */
+        .btn:focus {
+            outline: none;
+            box-shadow: none;
         }
         
         .btn::before {
@@ -276,6 +286,14 @@
         
         .btn:hover::before {
             left: 100%;
+        }
+        
+        /* Touch-specific styles for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:active {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
         }
         
         /* Hero Section Buttons - Both have background */
@@ -334,14 +352,23 @@
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
         
-        /* Remove unused CTA button styles */
-        
         .hero-visual {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
+            /* Hero visual animation */
+            opacity: 0;
+            transform: translateX(30px);
+            animation: slideInRight 0.8s ease-out 0.6s forwards;
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .phone-container {
@@ -365,8 +392,26 @@
             z-index: 10;
         }
         
-        .phone-frame:hover {
-            transform: rotate(0deg) scale(1.02);
+        /* Desktop hover effect */
+        @media (hover: hover) and (pointer: fine) {
+            .phone-frame:hover {
+                transform: rotate(0deg) scale(1.02);
+            }
+        }
+        
+        /* Mobile tap effect with reset */
+        @media (hover: none) and (pointer: coarse) {
+            .phone-frame {
+                cursor: pointer;
+            }
+            
+            .phone-frame:active {
+                transform: rotate(0deg) scale(1.02);
+            }
+            
+            .phone-frame:not(:active) {
+                transform: rotate(-3deg);
+            }
         }
         
         .phone-frame::before {
@@ -390,7 +435,7 @@
             object-fit: cover;
         }
         
-        /* Restore decorative circles around image */
+        /* Decorative circles around image */
         .decorative-elements {
             position: absolute;
             width: 120%;
@@ -421,8 +466,8 @@
             width: 18px;
             height: 18px;
             background: var(--lavender);
-            bottom: 10%;
-            right: 8%;
+            bottom: 5%;
+            right: 5%;
             opacity: 0.4;
             animation-delay: 2s;
         }
@@ -447,12 +492,14 @@
             padding: 5rem 0;
             position: relative;
             z-index: 1;
+            width: 100%;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            width: 100%;
         }
         
         .section-header {
@@ -545,6 +592,25 @@
             height: 100%;
             background: radial-gradient(circle, rgba(156, 175, 136, 0.03) 0%, transparent 70%);
             animation: float 15s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                border-radius: 50% 30% 70% 40%;
+            }
+            25% {
+                transform: translate(20px, -20px) rotate(3deg);
+                border-radius: 30% 70% 50% 60%;
+            }
+            50% {
+                transform: translate(-15px, -35px) rotate(-2deg);
+                border-radius: 70% 40% 30% 50%;
+            }
+            75% {
+                transform: translate(25px, -15px) rotate(1deg);
+                border-radius: 40% 60% 70% 30%;
+            }
         }
         
         .highlight-header {
@@ -640,6 +706,21 @@
             transition: all 0.2s ease;
             position: relative;
             border: 2px solid transparent;
+            /* Initial state for animation */
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+        
+        /* Faster animation for feature cards */
+        .feature-card.animate {
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         
         .feature-card:hover {
@@ -820,33 +901,47 @@
             font-size: 0.85rem;
         }
         
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(93, 124, 90, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 999;
-            display: none;
-        }
-        
-        .modal {
+        /* Modal - Using native dialog element */
+        dialog {
+            border: none;
+            border-radius: 2rem;
+            padding: 3rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background: white;
+            /* Center the dialog */
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: white;
-            border-radius: 2rem;
-            padding: 3rem;
-            max-width: 90%;
-            width: 400px;
-            z-index: 1000;
-            display: none;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            /* Animation for modal appearance */
+            opacity: 0;
+            scale: 0.9;
+            transition: all 0.3s ease-out;
+        }
+        
+        dialog[open] {
+            opacity: 1;
+            scale: 1;
+        }
+        
+        dialog::backdrop {
+            background: rgba(93, 124, 90, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        
+        /* Disable scroll when modal is open */
+        body.modal-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
         }
         
         .modal h3 {
@@ -938,19 +1033,18 @@
             }
             
             .modal {
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
+                max-width: 95vw;
+                padding: 2rem;
+                border-radius: 1.5rem;
+            }
+            
+            .modal h3 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
-    
     <!-- Header -->
     <header class="header">
         <div class="header-content">
@@ -1177,33 +1271,44 @@
     </footer>
 
     <!-- Modal -->
-    <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="modal" id="comingSoonModal">
+    <dialog id="comingSoonModal" class="modal">
         <h3>Coming Soon! 🎉</h3>
         <p>The iOS version of Nothing is currently in development and will be available on the App Store soon. We're putting the finishing touches on making it perfect for you!</p>
         <button class="btn btn-primary" id="closeModalButton">Got it!</button>
-    </div>
+    </dialog>
 
     <script>
-        // Modal functionality
+        // Modal functionality using native dialog element
         const appStoreButtons = [
             document.getElementById('appStoreButton'),
             document.getElementById('appStoreButtonCTA')
         ];
-        const modalOverlay = document.getElementById('modalOverlay');
-        const comingSoonModal = document.getElementById('comingSoonModal');
+        const modal = document.getElementById('comingSoonModal');
         const closeModalButton = document.getElementById('closeModalButton');
         
+        // Store scroll position
+        let scrollPosition = 0;
+        
         function showModal() {
-            modalOverlay.style.display = 'block';
-            comingSoonModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            // Store current scroll position
+            scrollPosition = window.pageYOffset;
+            
+            // Disable body scroll and maintain position
+            document.body.classList.add('modal-open');
+            document.body.style.top = `-${scrollPosition}px`;
+            
+            modal.showModal();
         }
         
         function hideModal() {
-            modalOverlay.style.display = 'none';
-            comingSoonModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            modal.close();
+            
+            // Re-enable body scroll and restore position
+            document.body.classList.remove('modal-open');
+            document.body.style.top = '';
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPosition);
         }
         
         // Add event listeners to all App Store buttons
@@ -1214,13 +1319,17 @@
         });
         
         closeModalButton.addEventListener('click', hideModal);
-        modalOverlay.addEventListener('click', hideModal);
         
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
+        // Close modal when clicking on backdrop
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
                 hideModal();
             }
+        });
+        
+        // Close modal with Escape key (handled automatically by dialog element)
+        modal.addEventListener('cancel', function(event) {
+            // You can add custom logic here if needed when user presses Escape
         });
         
         // Smooth scrolling for navigation links
@@ -1241,49 +1350,32 @@
             });
         });
         
-        // Parallax effect for background shapes
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const shapes = document.querySelectorAll('.shape');
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.05;
-                shape.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-            
-            // Parallax for decorative circles
-            const decoCircles = document.querySelectorAll('.deco-circle');
-            decoCircles.forEach((circle, index) => {
-                const speed = (index + 1) * 0.03;
-                circle.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-        
-        // Intersection Observer for animations
+        // Intersection Observer for feature card animations with faster timing
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) scale(1)';
+                    // Add staggered delay for smooth animation sequence
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 50); // Faster stagger (50ms vs 100ms)
                 }
             });
         }, observerOptions);
         
-        // Animate elements on scroll
+        // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            const animateElements = document.querySelectorAll('.feature-card, .feature-highlight');
-            animateElements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px) scale(0.95)';
-                element.style.transition = `all 0.3s ease ${index * 0.03}s`;
-                observer.observe(element);
+            // Observe feature cards for animation
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                observer.observe(card);
             });
             
-            // Add hover sound effect simulation
+            // Add hover sound effect simulation for buttons
             const buttons = document.querySelectorAll('.btn');
             buttons.forEach(button => {
                 button.addEventListener('mouseenter', () => {
