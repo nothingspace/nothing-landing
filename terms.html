@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - Nothing App</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
+        :root {
+            --cream: #fefdf8;
+            --sage: #9caf88;
+            --forest: #5d7c5a;
+            --soft-gray: #636e72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            /* Remove tap highlight on mobile */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(254, 253, 248, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(156, 175, 136, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--forest);
+            position: relative;
+            text-decoration: none;
+        }
+
+        .logo::after {
+            content: '✨';
+            position: absolute;
+            top: -5px;
+            right: -25px;
+            font-size: 0.9rem;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: var(--sage);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--soft-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            /* Remove all mobile tap effects */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* Remove focus outline */
+            outline: none;
+        }
+
+        .back-link i {
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            color: var(--forest);
+        }
+
+        /* Remove focus styles on mobile */
+        .back-link:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Touch-specific styles for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .back-link:active {
+                color: var(--forest);
+                transform: scale(0.98);
+                transition: transform 0.1s ease, color 0.1s ease;
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #111;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--forest);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: rgba(156, 175, 136, 0.1);
+            border-left: 4px solid var(--sage);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        .last-updated {
+            font-style: italic;
+            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">NOTHING</div>
+                <div class="tagline">Powered by AI</div>
+            </div>
+            <a href="index.html" class="back-link">
+                <i class="bi bi-chevron-left"></i> Home
+            </a>
+        </div>
+    </header>
+
+        <h1>Terms of Use</h1>
+
+        <p>Welcome to Nothing ("the App"). By downloading, installing, or using Nothing, you agree to be bound by these Terms of Use ("Terms"). Please read them carefully before using the App.</p>
+
+        <h2>1. Acceptance of Terms</h2>
+
+        <p>By accessing or using Nothing, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, please do not use the App.</p>
+
+        <h2>2. Description of Service</h2>
+
+        <p>Nothing is a note-taking and task management application that provides:</p>
+
+        <ul>
+            <li>AI-powered note organization and suggestions</li>
+            <li>Task and activity management</li>
+            <li>Cloud backup via Google Drive</li>
+            <li>Two-factor authenticator (2FA) code management</li>
+            <li>Expense and transaction tracking</li>
+        </ul>
+
+        <h2>3. Auto-Renewable Subscriptions</h2>
+
+        <div class="highlight-box">
+            <p><strong>Important:</strong> Nothing offers auto-renewable subscription plans that provide access to premium features ("Nothing Pro").</p>
+        </div>
+
+        <h3>3.1 Subscription Options</h3>
+
+        <p>Nothing Pro is available as:</p>
+        <ul>
+            <li><strong>Weekly Subscription</strong> - Billed weekly</li>
+            <li><strong>Monthly Subscription</strong> - Billed monthly</li>
+            <li><strong>Annual Subscription</strong> - Billed annually</li>
+        </ul>
+
+        <p>Current pricing is displayed in the App before purchase and may vary by region.</p>
+
+        <h3>3.2 Payment and Billing</h3>
+
+        <ul>
+            <li>Payment will be charged to your Apple ID account or Google Play account at confirmation of purchase.</li>
+            <li>Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period.</li>
+            <li>Your account will be charged for renewal within 24 hours prior to the end of the current period at the same price.</li>
+        </ul>
+
+        <h3>3.3 Managing Your Subscription</h3>
+
+        <ul>
+            <li>You can manage or cancel your subscription in your device's account settings (App Store or Google Play).</li>
+            <li>No refunds will be provided for the unused portion of any subscription period.</li>
+            <li>Cancellation takes effect at the end of the current billing period.</li>
+        </ul>
+
+        <h3>3.4 Free Trial</h3>
+
+        <p>If offered, any unused portion of a free trial period will be forfeited when you purchase a subscription.</p>
+
+        <h2>4. User Accounts</h2>
+
+        <p>To access certain features, you may need to create an account using Google Sign-In. You are responsible for:</p>
+
+        <ul>
+            <li>Maintaining the confidentiality of your account credentials</li>
+            <li>All activities that occur under your account</li>
+            <li>Notifying us immediately of any unauthorized use</li>
+        </ul>
+
+        <h2>5. User Content</h2>
+
+        <p>You retain ownership of all content you create within the App. By using Nothing, you grant us a limited license to store, process, and display your content solely for the purpose of providing the service to you.</p>
+
+        <h2>6. Acceptable Use</h2>
+
+        <p>You agree not to:</p>
+
+        <ul>
+            <li>Use the App for any unlawful purpose</li>
+            <li>Attempt to gain unauthorized access to the App or its systems</li>
+            <li>Interfere with or disrupt the App's functionality</li>
+            <li>Reverse engineer or decompile any part of the App</li>
+            <li>Use the App to transmit harmful or malicious content</li>
+        </ul>
+
+        <h2>7. Intellectual Property</h2>
+
+        <p>The App, including its design, features, and content (excluding user-generated content), is owned by Nothing and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our prior written consent.</p>
+
+        <h2>8. Third-Party Services</h2>
+
+        <p>Nothing integrates with third-party services including:</p>
+
+        <ul>
+            <li><strong>Google Drive</strong> - For cloud backup functionality</li>
+            <li><strong>AI Services</strong> - For intelligent features and suggestions</li>
+        </ul>
+
+        <p>Your use of these services is subject to their respective terms and privacy policies.</p>
+
+        <h2>9. Disclaimer of Warranties</h2>
+
+        <p>THE APP IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT THE APP WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE.</p>
+
+        <h2>10. Limitation of Liability</h2>
+
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP.</p>
+
+        <h2>11. Privacy</h2>
+
+        <p>Your use of Nothing is also governed by our <a href="privacy.html">Privacy Policy</a>, which describes how we collect, use, and protect your information.</p>
+
+        <h2>12. Changes to Terms</h2>
+
+        <p>We may update these Terms from time to time. We will notify you of significant changes through the App or by other means. Your continued use of the App after changes constitutes acceptance of the updated Terms.</p>
+
+        <h2>13. Termination</h2>
+
+        <p>We reserve the right to suspend or terminate your access to the App at any time for violation of these Terms or for any other reason at our discretion.</p>
+
+        <h2>14. Governing Law</h2>
+
+        <p>These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.</p>
+
+        <h2>15. Contact Us</h2>
+
+        <p>If you have any questions about these Terms, please contact us at:</p>
+
+        <p>Email: <a href="mailto:contact@nothingapp.live">contact@nothingapp.live</a></p>
+
+        <p class="last-updated">Last Updated: February 24, 2026</p>
+
+        <footer>
+            <p>&copy; 2025 NOTHING. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
+        </footer>
+    </div>
+</body>
+</html>
