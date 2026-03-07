@@ -1271,12 +1271,7 @@
         </div>
     </footer>
 
-    <!-- Modal -->
-    <dialog id="comingSoonModal" class="modal">
-        <h3>Coming Soon! 🎉</h3>
-        <p>The iOS version of Nothing is currently in development and will be available on the App Store soon. We're putting the finishing touches on making it perfect for you!</p>
-        <button class="btn btn-primary" id="closeModalButton">Got it!</button>
-    </dialog>
+
 
     <script>
         // Modal functionality using native dialog element
@@ -1288,42 +1283,18 @@
             document.getElementById('googlePlayButton'),
             document.getElementById('googlePlayButtonCTA')
         ];
-        const modal = document.getElementById('comingSoonModal');
-        const closeModalButton = document.getElementById('closeModalButton');
-        
-        // Store scroll position
-        let scrollPosition = 0;
-        
-        function showModal() {
-            // Store current scroll position
-            scrollPosition = window.pageYOffset;
-            
-            // Disable body scroll and maintain position
-            document.body.classList.add('modal-open');
-            document.body.style.top = `-${scrollPosition}px`;
-            
-            modal.showModal();
-        }
-        
-        function hideModal() {
-            modal.close();
-            
-            // Re-enable body scroll and restore position
-            document.body.classList.remove('modal-open');
-            document.body.style.top = '';
-            
-            // Restore scroll position
-            window.scrollTo(0, scrollPosition);
+        function openAppStore() {
+            window.open('https://apps.apple.com/us/app/nothing-notes-tasks-ai/id6759426644', '_blank');
         }
         
         function openGooglePlay() {
             window.open('https://play.google.com/store/apps/details?id=live.nothingapp', '_blank');
         }
         
-        // Add event listeners to all App Store buttons (show modal)
+        // Add event listeners to all App Store buttons (direct link)
         appStoreButtons.forEach(button => {
             if (button) {
-                button.addEventListener('click', showModal);
+                button.addEventListener('click', openAppStore);
             }
         });
         
@@ -1334,19 +1305,7 @@
             }
         });
         
-        closeModalButton.addEventListener('click', hideModal);
-        
-        // Close modal when clicking on backdrop
-        modal.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                hideModal();
-            }
-        });
-        
-        // Close modal with Escape key (handled automatically by dialog element)
-        modal.addEventListener('cancel', function(event) {
-            // You can add custom logic here if needed when user presses Escape
-        });
+
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
