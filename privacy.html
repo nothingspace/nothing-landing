@@ -218,6 +218,7 @@
             <li><strong>User-Generated Content:</strong> The notes, tasks, and other content you create while using Nothing.</li>
             <li><strong>Device Information:</strong> Information about your device, including device type, operating system, and unique device identifiers.</li>
             <li><strong>Usage Data:</strong> Information about how you use Nothing, including features accessed and time spent in the app.</li>
+            <li><strong>AI-Related Data:</strong> When you use AI-powered features, the following data may be sent to a third-party AI service: note text content, task content, images you upload for AI analysis, chat conversation messages, and conversation history within AI chat sessions. This data is only sent when you actively initiate an AI feature and after you have granted consent.</li>
         </ul>
         
         <h2>How We Use Your Information</h2>
@@ -239,11 +240,40 @@
         
         <h2>Third-Party Services</h2>
         
-        <p>Nothing may integrate with third-party services such as Google Drive for cloud sync functionality. When you use these integrations, your data may be shared with these third parties. We encourage you to review the privacy policies of these third parties.</p>
+        <p>Nothing integrates with the following third-party services:</p>
         
-        <h2>AI Features</h2>
+        <ul>
+            <li><strong>Google Drive:</strong> For optional cloud backup and sync functionality. When you enable Google Drive sync, your notes, tasks, and app data are uploaded to your Google Drive account. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
+            <li><strong>Google Gemini API:</strong> For AI-powered features (see "AI Features & Third-Party AI Data Sharing" section below).</li>
+            <li><strong>Apple iCloud:</strong> For optional iCloud backup and sync functionality on iOS devices.</li>
+        </ul>
         
-        <p>Our AI-powered features process your notes to provide intelligent suggestions and organization. This processing typically happens on-device. For more complex AI features, some data may be processed in the cloud, but we take measures to protect your privacy during this processing.</p>
+        <h2>AI Features & Third-Party AI Data Sharing</h2>
+        
+        <h3>AI Service Provider</h3>
+        <p>Nothing uses <strong>Google's Gemini API</strong> to power its AI features. When you use an AI feature, your data is sent to Google for processing. Google's handling of this data is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a> and the <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">Gemini API Terms of Service</a>.</p>
+        
+        <h3>What Data Is Sent</h3>
+        <p>When you actively use an AI feature, the following data may be sent to Google's Gemini API:</p>
+        <ul>
+            <li><strong>Note text content:</strong> The text of the note you are currently working on, for features like beautify, summarize, fix grammar, and AI chat.</li>
+            <li><strong>Task content:</strong> Task titles and descriptions, for features like task analysis and planning.</li>
+            <li><strong>Images:</strong> Photos or images you upload for AI image analysis or conversion to notes.</li>
+            <li><strong>Chat messages and conversation history:</strong> Messages exchanged during AI chat sessions, including prior messages in the current conversation for context.</li>
+            <li><strong>User prompts:</strong> Any custom instructions or questions you type in the AI assistant.</li>
+        </ul>
+        
+        <h3>When Data Is Sent</h3>
+        <p>Data is only sent to Google's Gemini API when you <strong>actively initiate</strong> an AI feature (e.g., tapping an AI action button, sending a message in AI chat, or using AI-powered analysis). No data is sent automatically or in the background.</p>
+        
+        <h3>User Consent</h3>
+        <p>By choosing to use any AI feature within the app, you acknowledge and consent to your data being sent to Google's Gemini API for processing. AI features are entirely optional — if you prefer not to share data with Google's AI service, you can simply choose not to use the AI features, and all other app functionality will remain fully available.</p>
+        
+        <h3>Bring Your Own API Key</h3>
+        <p>Nothing offers an optional "Bring Your Own API Key" mode where you can provide your own Google Gemini API key. In this mode, your data is sent directly to Google's Gemini API using your personal API key, bypassing our server. This mode is subject to your own agreement with Google.</p>
+        
+        <h3>Data Protection</h3>
+        <p>All data transmitted to Google's Gemini API is encrypted in transit using HTTPS/TLS. We do not store, log, or retain any of the content you send to the AI service on our servers — your data is forwarded directly to Google's Gemini API for processing and is not kept by us. Google's data retention practices for the Gemini API are governed by their own policies.</p>
         
         <h2>Your Rights</h2>
         
@@ -273,7 +303,7 @@
         
         <p>Email: contact@nothingapp.com</p>
         
-        <p class="last-updated">Last Updated: March 28, 2025</p>
+        <p class="last-updated">Last Updated: February 24, 2026</p>
         
         <footer>
             <p>&copy; 2025 NOTHING. All rights reserved.</p>
