@@ -1,0 +1,43 @@
+# Nothing
+
+> Nothing ("Nothing Notes, Tasks, AI" on the App Store and Google Play) is a mobile app for iPhone, iPad and Android that keeps notes, tasks, habits and money in one simple space. Write, record, scan or snap a photo, and it lands in one Feed. It has built-in tools and an optional AI assistant powered by Google Gemini. Free to download; the free app shows ads, and Nothing Pro is an optional subscription.
+
+Key facts:
+
+- Platforms: iPhone, iPad and Android. There is no web or desktop version today.
+- Price: free to download on the App Store and Google Play, and the free app shows ads. Nothing Pro is an optional monthly or yearly subscription that unlocks the premium features. Contains in-app purchases.
+- Data: notes, tasks, habits and spending live in a database on your device. Turn on Backup Sync and a copy goes to your own Google Drive.
+- AI: the assistant runs on Google Gemini. To use it, sign in and subscribe to Pro, or add your own Gemini API key. Data goes to Google's Gemini API only when you start an AI action yourself, never in the background. AI is entirely optional; everything else works without it.
+- Account: not needed. Notes, tasks, habits, money and tools work without signing in. You sign in to use the AI assistant, and connect a Google account if you want backups in Google Drive.
+- Languages: fifteen — English, Arabic, Chinese (Simplified and Traditional), French, German, Hindi, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish, Thai and Vietnamese. Arabic reads right to left, and any language can switch to right-to-left.
+- Look: seven themes (Light, Teal Light, Forest, Dark, Night Blue, Amber Dark, Monochrome) or follow the system, plus a choice of font and text size.
+- Contact: contact@nothingapp.live
+
+## Features
+
+- [Feed](https://nothingapp.live/#feed): notes, voice memos, scans and photos share one stream, each tinted by its category. Read it as a grid, a list, or a timeline down to the minute. Checklists and drawings included.
+- [Voice](https://nothingapp.live/#voice): hit record and read the transcript as you speak (live transcript is in beta), then drop the text straight into a note. Recording carries on in a small floating pill while you do something else.
+- [Tasks](https://nothingapp.live/#tasks): tasks group themselves by due date (overdue, today, tomorrow). Give one a priority (Urgent to Low), a repeat and a reminder.
+- [Habits](https://nothingapp.live/#habits): one tap marks today done. Each habit keeps its current and longest streak, with 26 weeks of check-ins on a single grid. Morning and evening habits.
+- [Money](https://nothingapp.live/#money): log income, expenses and savings in a few taps, in your currency. The balance shows, of every $100 in, how much you spent, saved and kept. Spending trends, and receipt scanning with AI.
+- [AI assistant](https://nothingapp.live/#ai): ask it to summarise, plan, or pull the to-dos out of a note; chat and a voice assistant. Changes show up as a preview first, and nothing is touched until you tap Apply. Needs sign-in and Pro, or your own Gemini key.
+- [Tools](https://nothingapp.live/#tools): search looks through your notes, your tasks and the tools themselves. QR scanner, QR generator, barcode scanner, authenticator (2FA codes), timer and stopwatch, compass, Wheel of Names.
+- [Privacy](https://nothingapp.live/#privacy): your day stays on your phone. App Lock (PIN when you open the app), optional Backup Sync to your own Google Drive, and AI that runs only when you start it.
+
+## Questions
+
+- [FAQ](https://nothingapp.live/#faq): is Nothing free, how the AI works and what it costs, where data is kept, whether you need an account, web or desktop versions, and languages.
+
+## Download
+
+- [App Store — iPhone and iPad](https://apps.apple.com/app/id6759426644)
+- [Google Play — Android](https://play.google.com/store/apps/details?id=live.nothingapp)
+
+## Legal
+
+- [Privacy Policy](https://nothingapp.live/privacy.html): how Nothing collects, uses and protects your information, including data shared with Google Gemini for AI features.
+- [Terms of Use](https://nothingapp.live/terms.html): the terms for using Nothing, including Nothing Pro subscriptions and AI data sharing.
+
+## Optional
+
+- [Home page](https://nothingapp.live/): the full product tour with app screenshots.

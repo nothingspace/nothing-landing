@@ -1,262 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Use - Nothing App</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
-
-        :root {
-            --cream: #fefdf8;
-            --sage: #9caf88;
-            --forest: #5d7c5a;
-            --soft-gray: #636e72;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            /* Remove tap highlight on mobile */
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-        }
-
-        body {
-            background-color: var(--cream);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(254, 253, 248, 0.95);
-            backdrop-filter: blur(20px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(156, 175, 136, 0.15);
-            margin-bottom: 2rem;
-        }
-
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1.5rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--forest);
-            position: relative;
-            text-decoration: none;
-        }
-
-        .logo::after {
-            content: '✨';
-            position: absolute;
-            top: -5px;
-            right: -25px;
-            font-size: 0.9rem;
-            animation: sparkle 3s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
-        }
-
-        .tagline {
-            font-size: 0.75rem;
-            color: var(--sage);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--soft-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-            /* Remove all mobile tap effects */
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            /* Remove focus outline */
-            outline: none;
-        }
-
-        .back-link i {
-            margin-right: 0.5rem;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .back-link:hover {
-            color: var(--forest);
-        }
-
-        /* Remove focus styles on mobile */
-        .back-link:focus {
-            outline: none;
-            box-shadow: none;
-        }
-
-        /* Touch-specific styles for mobile */
-        @media (hover: none) and (pointer: coarse) {
-            .back-link:active {
-                color: var(--forest);
-                transform: scale(0.98);
-                transition: transform 0.1s ease, color 0.1s ease;
-            }
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #111;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #111;
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #333;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        ul, ol {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        a {
-            color: var(--forest);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .highlight-box {
-            background: rgba(156, 175, 136, 0.1);
-            border-left: 4px solid var(--sage);
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 0.5rem 0.5rem 0;
-        }
-
-        .highlight-box p {
-            margin-bottom: 0;
-        }
-
-        .last-updated {
-            font-style: italic;
-            margin-top: 3rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Terms of Use — Nothing</title>
+  <meta name="description" content="The terms for using Nothing, including Nothing Pro subscriptions and AI data sharing." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://nothingapp.live/terms.html" />
+  <meta name="theme-color" content="#E8F6F1" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#101A18" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nothingapp.live/terms.html" />
+  <meta property="og:title" content="Terms of Use — Nothing" />
+  <meta property="og:description" content="The terms for using Nothing, including Nothing Pro subscriptions and AI data sharing." />
+  <meta property="og:image" content="https://nothingapp.live/assets/og.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Your whole day, in Nothing — the app Feed on a phone, with a habit streak, an overdue task and a balance card around it" />
+  <meta property="og:site_name" content="Nothing" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Terms of Use — Nothing" />
+  <meta name="twitter:description" content="The terms for using Nothing, including Nothing Pro subscriptions and AI data sharing." />
+  <meta name="twitter:image" content="https://nothingapp.live/assets/og.png" />
+  <meta name="twitter:image:alt" content="Your whole day, in Nothing — the app Feed on a phone, with a habit streak, an overdue task and a balance card around it" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/legal.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://nothingapp.live/terms.html#webpage",
+        "url": "https://nothingapp.live/terms.html",
+        "name": "Terms of Use — Nothing",
+        "description": "The terms for using Nothing, including Nothing Pro subscriptions and AI data sharing.",
+        "inLanguage": "en",
+        "dateModified": "2026-10-22",
+        "isPartOf": { "@id": "https://nothingapp.live/#website" },
+        "about": { "@id": "https://nothingapp.live/#app" },
+        "publisher": { "@id": "https://nothingapp.live/#organization" },
+        "breadcrumb": { "@id": "https://nothingapp.live/terms.html#breadcrumb" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://nothingapp.live/terms.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Nothing", "item": "https://nothingapp.live/" },
+          { "@type": "ListItem", "position": 2, "name": "Terms of Use", "item": "https://nothingapp.live/terms.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-    <div class="container">
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">NOTHING</div>
-                <div class="tagline">Powered by AI</div>
-            </div>
-            <a href="index.html" class="back-link">
-                <i class="bi bi-chevron-left"></i> Home
-            </a>
-        </div>
-    </header>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <!-- the app's N mark (docs/design/assets/app/n_logo.svg) — recolour, never redraw -->
+    <symbol id="n-mark" viewBox="0 0 50 58"><path fill="currentColor" d="M47.3001378,-3.55271368e-15 C48.0201004,-3.55271368e-15 48.6500676,0.269985961 49.1900395,0.809957882 C49.7300115,1.3499298 50,1.97989705 50,2.69985961 L50,54.3828864 C50,55.102849 49.7300115,55.7328162 49.1900395,56.2727881 C48.6500676,56.81276 48.0201004,57.082746 47.3001378,57.082746 L40.5119194,57.082746 C39.5862532,57.082746 38.8405777,56.7227647 38.2748928,56.0028022 L0.553997166,4.31977537 C0.245441783,3.90836819 0.065451142,3.44553512 0.0140252447,2.93127615 C-0.0374006526,2.41701717 0.0525946677,1.92847115 0.284011206,1.46563807 C0.515427743,1.002805 0.849696076,0.642823716 1.2868162,0.38569423 C1.72393633,0.128564743 2.19962588,-3.55271368e-15 2.71388485,-3.55271368e-15 L9.5021033,-3.55271368e-15 C9.91351047,-3.55271368e-15 10.3249177,0.0899953203 10.7363248,0.269985961 C11.147732,0.449976601 11.4562874,0.719962562 11.661991,1.07994384 L38.7377259,37.8751734 L38.7377259,2.69985961 C38.7377259,1.97989705 38.9948554,1.3499298 39.5091144,0.809957882 C40.0233733,0.269985961 40.6661971,-3.55271368e-15 41.4375855,-3.55271368e-15 L47.3001378,-3.55271368e-15 Z M8.57643714,37.4123403 C9.29639971,37.4123403 9.92636695,37.6694698 10.4663389,38.1837287 C11.0063108,38.6979877 11.2762968,39.3408114 11.2762968,40.1121999 L11.2762968,54.3828864 C11.2762968,55.102849 11.0063108,55.7328162 10.4663389,56.2727881 C9.92636695,56.81276 9.29639971,57.082746 8.57643714,57.082746 L2.71388485,57.082746 C1.99392229,57.082746 1.36395505,56.81276 0.823983127,56.2727881 C0.284011206,55.7328162 0.0140252447,55.102849 0.0140252447,54.3828864 L0.0140252447,40.1121999 C0.0140252447,39.3408114 0.284011206,38.6979877 0.823983127,38.1837287 C1.36395505,37.6694698 1.99392229,37.4123403 2.71388485,37.4123403 L8.57643714,37.4123403 Z"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 16 16"><path fill="currentColor" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 16 16"><path fill="currentColor" d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295ZM1 13.396V2.603L6.846 8 1 13.396ZM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.2V11M8 5.1v.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  </svg>
 
-        <h1>Terms of Use</h1>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <!-- ─── NAV ─────────────────────────────────────────────────────── -->
+  <header class="topnav" id="topnav">
+    <div class="container topnav-inner">
+      <a href="index.html" class="brand" aria-label="Nothing — back to top">
+        <svg aria-hidden="true"><use href="#n-mark"/></svg>
+        <span class="wordmark">NOTHING</span>
+      </a>
+      <nav aria-label="Main">
+        <a class="link" href="index.html#tour">Tour</a>
+        <a class="link" href="index.html#privacy">Privacy</a>
+        <a class="link" href="index.html#faq">FAQ</a>
+        <a class="pill" href="index.html#download">Get the app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="legal" data-od-id="terms-page">
+    <div class="container legal-grid">
+      <details class="toc" id="toc" data-od-id="terms-toc">
+        <summary>On this page</summary>
+        <nav aria-label="Terms of Use sections">
+          <ol>
+            <li><a href="#acceptance-of-terms">Acceptance of Terms</a></li>
+            <li><a href="#description-of-service">Description of Service</a></li>
+            <li><a href="#auto-renewable-subscriptions">Auto-Renewable Subscriptions</a></li>
+            <li><a href="#user-accounts">User Accounts</a></li>
+            <li><a href="#user-content">User Content</a></li>
+            <li><a href="#acceptable-use">Acceptable Use</a></li>
+            <li><a href="#intellectual-property">Intellectual Property</a></li>
+            <li><a href="#third-party-services">Third-Party Services</a></li>
+            <li><a href="#ai-data-sharing-consent">AI Data Sharing & Consent</a></li>
+            <li><a href="#disclaimer-of-warranties">Disclaimer of Warranties</a></li>
+            <li><a href="#limitation-of-liability">Limitation of Liability</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#changes-to-terms">Changes to Terms</a></li>
+            <li><a href="#termination">Termination</a></li>
+            <li><a href="#governing-law">Governing Law</a></li>
+            <li><a href="#contact-us">Contact Us</a></li>
+          </ol>
+        </nav>
+      </details>
+      <article class="legal-body" data-od-id="terms-body">
+        <p class="eyebrow">Legal</p>
+        <h1 data-od-id="terms-title">Terms of Use</h1>
+        <p class="updated">Last updated <time datetime="2026-10-22">October 22, 2026</time></p>
 
         <p>Welcome to Nothing ("the App"). By downloading, installing, or using Nothing, you agree to be bound by these Terms of Use ("Terms"). Please read them carefully before using the App.</p>
 
-        <h2>1. Acceptance of Terms</h2>
+        <h2 id="acceptance-of-terms" data-od-id="terms-acceptance-of-terms">1. Acceptance of Terms</h2>
 
         <p>By accessing or using Nothing, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, please do not use the App.</p>
 
-        <h2>2. Description of Service</h2>
+        <h2 id="description-of-service" data-od-id="terms-description-of-service">2. Description of Service</h2>
 
         <p>Nothing is a note-taking and task management application that provides:</p>
 
         <ul>
-            <li>AI-powered note organization and suggestions</li>
+            <li>Optional AI features, such as summarising notes, planning tasks and AI chat</li>
             <li>Task and activity management</li>
             <li>Cloud backup via Google Drive</li>
             <li>Two-factor authenticator (2FA) code management</li>
             <li>Expense and transaction tracking</li>
         </ul>
 
-        <h2>3. Auto-Renewable Subscriptions</h2>
+        <h2 id="auto-renewable-subscriptions" data-od-id="terms-auto-renewable-subscriptions">3. Auto-Renewable Subscriptions</h2>
 
-        <div class="highlight-box">
+        <div class="note">
             <p><strong>Important:</strong> Nothing offers auto-renewable subscription plans that provide access to premium features ("Nothing Pro").</p>
         </div>
 
@@ -290,7 +174,7 @@
 
         <p>If offered, any unused portion of a free trial period will be forfeited when you purchase a subscription.</p>
 
-        <h2>4. User Accounts</h2>
+        <h2 id="user-accounts" data-od-id="terms-user-accounts">4. User Accounts</h2>
 
         <p>To access certain features, you may need to create an account using Google Sign-In. You are responsible for:</p>
 
@@ -300,11 +184,11 @@
             <li>Notifying us immediately of any unauthorized use</li>
         </ul>
 
-        <h2>5. User Content</h2>
+        <h2 id="user-content" data-od-id="terms-user-content">5. User Content</h2>
 
         <p>You retain ownership of all content you create within the App. By using Nothing, you grant us a limited license to store, process, and display your content solely for the purpose of providing the service to you.</p>
 
-        <h2>6. Acceptable Use</h2>
+        <h2 id="acceptable-use" data-od-id="terms-acceptable-use">6. Acceptable Use</h2>
 
         <p>You agree not to:</p>
 
@@ -316,25 +200,24 @@
             <li>Use the App to transmit harmful or malicious content</li>
         </ul>
 
-        <h2>7. Intellectual Property</h2>
+        <h2 id="intellectual-property" data-od-id="terms-intellectual-property">7. Intellectual Property</h2>
 
         <p>The App, including its design, features, and content (excluding user-generated content), is owned by Nothing and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our prior written consent.</p>
 
-        <h2>8. Third-Party Services</h2>
+        <h2 id="third-party-services" data-od-id="terms-third-party-services">8. Third-Party Services</h2>
 
         <p>Nothing integrates with third-party services including:</p>
 
         <ul>
             <li><strong>Google Drive</strong> — For cloud backup functionality. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
             <li><strong>Google Gemini API</strong> — For AI-powered features such as note beautification, summarization, grammar correction, image analysis, task planning, and AI chat. When you use these features, your content (note text, task data, images, chat messages, and conversation history) is sent to Google's Gemini API for processing. See <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">Gemini API Terms of Service</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
-            <li><strong>Apple iCloud</strong> — For optional iCloud backup and sync on iOS devices.</li>
         </ul>
 
         <p>Your use of these services is subject to their respective terms and privacy policies. We encourage you to review them.</p>
 
-        <h2>9. AI Data Sharing & Consent</h2>
+        <h2 id="ai-data-sharing-consent" data-od-id="terms-ai-data-sharing-consent">9. AI Data Sharing & Consent</h2>
 
-        <div class="highlight-box">
+        <div class="note">
             <p><strong>Important:</strong> By using AI-powered features in Nothing, you acknowledge and agree that your data will be sent to Google's Gemini API, a third-party AI service, for processing. No user data is stored on our servers.</p>
         </div>
 
@@ -364,42 +247,93 @@
 
         <p>You may stop sharing data with the AI service at any time by simply not using AI features. If you have configured a personal API key, you may remove it in the app's developer settings.</p>
 
-        <h2>10. Disclaimer of Warranties</h2>
+        <h2 id="disclaimer-of-warranties" data-od-id="terms-disclaimer-of-warranties">10. Disclaimer of Warranties</h2>
 
         <p>THE APP IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT THE APP WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE.</p>
 
-        <h2>11. Limitation of Liability</h2>
+        <h2 id="limitation-of-liability" data-od-id="terms-limitation-of-liability">11. Limitation of Liability</h2>
 
         <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP.</p>
 
-        <h2>12. Privacy</h2>
+        <h2 id="privacy" data-od-id="terms-privacy">12. Privacy</h2>
 
         <p>Your use of Nothing is also governed by our <a href="privacy.html">Privacy Policy</a>, which describes how we collect, use, and protect your information, including details about data shared with third-party AI services.</p>
 
-        <h2>13. Changes to Terms</h2>
+        <h2 id="changes-to-terms" data-od-id="terms-changes-to-terms">13. Changes to Terms</h2>
 
         <p>We may update these Terms from time to time. We will notify you of significant changes through the App or by other means. Your continued use of the App after changes constitutes acceptance of the updated Terms.</p>
 
-        <h2>14. Termination</h2>
+        <h2 id="termination" data-od-id="terms-termination">14. Termination</h2>
 
         <p>We reserve the right to suspend or terminate your access to the App at any time for violation of these Terms or for any other reason at our discretion.</p>
 
-        <h2>15. Governing Law</h2>
+        <h2 id="governing-law" data-od-id="terms-governing-law">15. Governing Law</h2>
 
         <p>These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.</p>
 
-        <h2>16. Contact Us</h2>
+        <h2 id="contact-us" data-od-id="terms-contact-us">16. Contact Us</h2>
 
         <p>If you have any questions about these Terms, please contact us at:</p>
 
         <p>Email: <a href="mailto:contact@nothingapp.live">contact@nothingapp.live</a></p>
-
-        <p class="last-updated">Last Updated: February 24, 2026</p>
-
-        <footer>
-            <p>&copy; 2025 NOTHING. All rights reserved.</p>
-            <p style="margin-top: 0.5rem;"><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
-        </footer>
+      </article>
     </div>
+  </main>
+
+  <!-- ─── FOOTER ──────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="brand" aria-label="Nothing — back to top"><svg aria-hidden="true"><use href="#n-mark"/></svg><span class="wordmark">NOTHING</span></a>
+          <p class="tag">Notes, tasks, habits and money. One simple space.</p>
+        </div>
+        <div>
+          <h2 class="foot-h">Product</h2>
+          <ul><li><a href="index.html#tour">Tour</a></li><li><a href="index.html#privacy">Privacy</a></li><li><a href="index.html#faq">FAQ</a></li></ul>
+        </div>
+        <div>
+          <h2 class="foot-h">Get it</h2>
+          <ul><li><a href="https://apps.apple.com/app/id6759426644" target="_blank" rel="noopener">App Store</a></li><li><a href="https://play.google.com/store/apps/details?id=live.nothingapp" target="_blank" rel="noopener">Google Play</a></li></ul>
+        </div>
+        <div>
+          <h2 class="foot-h">Support</h2>
+          <ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html" aria-current="page">Terms of Use</a></li><li><a href="mailto:contact@nothingapp.live">contact@nothingapp.live</a></li></ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>© <span class="num">2026</span> Nothing</span>
+        <span>App screens from the current design, shown ad-free (Pro). They may differ slightly from the app.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  /* 1 js flag · 2 nav hairline · 3 contents open on wide screens, close after a jump on narrow ones · 4 section spy */
+  (function () {
+    document.documentElement.classList.add('js');
+    var nav = document.getElementById('topnav');
+    var toc = document.getElementById('toc');
+    var wide = window.matchMedia('(min-width: 1025px)');
+    function fit() { if (wide.matches) toc.open = true; }
+    fit(); wide.addEventListener && wide.addEventListener('change', fit);
+    toc.addEventListener('click', function (e) {
+      if (e.target.closest('summary') && wide.matches) e.preventDefault();   // the list stays open beside the text
+      if (e.target.closest('a') && !wide.matches) toc.open = false;
+    });
+    var links = [].slice.call(toc.querySelectorAll('a'));
+    var heads = links.map(function (a) { return document.getElementById(a.hash.slice(1)); });
+    var ticking = false;
+    function spy() {
+      ticking = false;
+      nav.classList.toggle('is-scrolled', window.scrollY > 8);
+      var line = nav.offsetHeight + 96, pick = -1;
+      heads.forEach(function (h, n) { if (h.getBoundingClientRect().top <= line) pick = n; });
+      links.forEach(function (a, n) { if (n === pick) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+    spy();
+  })();
+  </script>
 </body>
 </html>
