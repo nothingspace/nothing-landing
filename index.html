@@ -43,10 +43,11 @@
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Geist only renders where SF Pro (the app's own font) is unavailable -->
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet" />
+  <!-- Geist only renders where SF Pro (the app's own font) is unavailable, so it loads without blocking the first paint -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" /></noscript>
   <link rel="preload" as="image" href="assets/screens/feed-populated.webp" />
-  <!-- structured data: every statement below is visible on this page; the FAQ is copied word for word -->
+  <!-- structured data: describes only what this page shows (the app name is its store listing name); the FAQ is copied word for word -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -90,7 +91,8 @@
         "description": "Write, record, scan or snap a photo. Notes, tasks, habits and spending live together in one simple space, with built-in tools and an optional AI assistant. For iPhone, iPad and Android.",
         "url": "https://nothingapp.live/",
         "operatingSystem": "iOS, iPadOS, Android",
-        "applicationCategory": "ProductivityApplication",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Productivity",
         "inLanguage": ["en", "ar", "zh-Hans", "zh-Hant", "fr", "de", "hi", "it", "ja", "ko", "pt-BR", "ru", "es", "th", "vi"],
         "image": "https://nothingapp.live/assets/og.png",
         "screenshot": [
@@ -643,6 +645,34 @@
       .band .caret { animation: none; }
     }
   </style>
+  <!-- compat layer (added in review): each rule applies only outside the browsers the design was tested in,
+       so current browsers render the design pixel for pixel -->
+  <style>
+    /* notched iPhones in landscape (viewport-fit=cover): keep content clear of the sensor housing */
+    .container { padding-left: max(var(--gutter), env(safe-area-inset-left)); padding-right: max(var(--gutter), env(safe-area-inset-right)); }
+    /* no color-mix() (iOS 16.0–16.1, Chromium < 111): a mix through var() would resolve to transparent */
+    @supports not (color: color-mix(in srgb, red, red)) {
+      .topnav { background: var(--bg); }
+      .pill:hover { background: var(--cta-bg); }
+      .store:hover { background: var(--s-bg); }
+      .stores > .store + .store { --s-line: var(--muted); }
+      .band .stores > .store + .store { --s-line: var(--band-sub); }
+    }
+    /* no alt text on generated content (Safari < 17.4, Firefox < 128): keep the glyphs */
+    @supports not (content: "x" / "") {
+      .dots > span:not(:last-child)::after { content: "·"; }
+      .f-meta .prio::before { content: "● "; }
+      .card-link::after { content: "→"; }
+    }
+    /* Windows High Contrast: keep the chosen theme, the switches, the FAQ marker and the current step visible */
+    @media (forced-colors: active) {
+      .swatch input:checked + label { outline: 2px solid Highlight; outline-offset: 2px; }
+      .switch { border: 1px solid CanvasText; }
+      .switch::after { background: CanvasText; }
+      summary::after { content: "+"; background: none; border: 1px solid CanvasText; display: grid; place-items: center; line-height: 1; }
+      .rail button[aria-current="step"] { text-decoration: underline; }
+    }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -834,7 +864,7 @@
               <div class="glow"></div>
               <div class="phone">
                 <div class="screen" id="stageScreen">
-                  <img class="is-active" src="assets/screens/fd-t1.webp" width="390" height="844" alt="" />
+                  <img class="is-active" src="assets/screens/fd-t1.webp" width="390" height="844" alt="" loading="lazy" />
                   <img src="assets/screens/ac-r6.webp" width="390" height="844" alt="" loading="lazy" />
                   <img src="assets/screens/th-p1.webp" width="390" height="844" alt="" loading="lazy" />
                   <img src="assets/screens/th-d1.webp" width="390" height="844" alt="" loading="lazy" />
@@ -1057,7 +1087,7 @@
     function setStep(i) {
       if (i === current) return;
       current = i;
-      if (peek < 0) show(i);
+      peek = -1; show(i);   // scrolling to another chapter ends a rail peek, so the phone always follows the page
       railBtns.forEach(function (b, n) { if (n === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
     }
     // geometry, not observer events: a fast jump (anchor, End key) can skip IO callbacks
@@ -1146,7 +1176,10 @@
       });
     });
     swatches.addEventListener('pointerleave', function () { applyTheme(); });
-    dark.addEventListener && dark.addEventListener('change', applyTheme);
+    // an OS light/dark switch only changes Follow System, and it isn't the visitor's choice: re-apply quietly
+    dark.addEventListener && dark.addEventListener('change', function () { if (document.querySelector('#swatches input:checked').value === 'system') applyTheme(); });
+    // browsers restore the checked radio on reload and Back, so start the preview from it
+    applyTheme(); window.addEventListener('pageshow', function () { applyTheme(); });
 
     // 7 · "Nothing starts here." types itself, like the app's empty Feed
     var line = document.getElementById('typeLine');

@@ -32,8 +32,32 @@
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet" />
+  <!-- Geist only renders where SF Pro is unavailable, so it loads without blocking the first paint -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" /></noscript>
   <link rel="stylesheet" href="assets/legal.css" />
+  <!-- compat layer (added in review): each rule applies only outside the browsers the design was tested in,
+       so current browsers render the design pixel for pixel -->
+  <style>
+    /* notched iPhones in landscape (viewport-fit=cover): keep content clear of the sensor housing */
+    .container { padding-left: max(var(--gutter), env(safe-area-inset-left)); padding-right: max(var(--gutter), env(safe-area-inset-right)); }
+    /* no color-mix() (iOS 16.0–16.1, Chromium < 111): a mix through var() would resolve to transparent */
+    @supports not (color: color-mix(in srgb, red, red)) {
+      .topnav { background: var(--bg); }
+      .pill:hover { background: var(--cta-bg); }
+      .store:hover { background: var(--s-bg); }
+      .stores > .store + .store { --s-line: var(--muted); }
+    }
+    /* no alt text on generated content (Safari < 17.4, Firefox < 128): keep the glyphs */
+    @supports not (content: "x" / "") {
+      .dots > span:not(:last-child)::after { content: "·"; }
+      @media (max-width: 1024px) { .toc summary::after { content: "+"; } }
+    }
+    /* printing with the OS in dark mode: print the light palette, the dark theme's pale text fades on paper */
+    @media print {
+      :root { --bg: #E8F6F1; --surface: #FFFFFF; --container: #DEECE7; --fg: #1C2B28; --text: #333333; --muted: #5C5C5C; --border: #CFE0DA; --accent: #006B6B; --on-accent: #FFFFFF; --cta-bg: #B2DFDB; --cta-fg: #1C2B28; --bezel: #1C2B28; --glow: #B2DFDB; --shadow: #142D28; }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -77,7 +101,7 @@
   <!-- ─── NAV ─────────────────────────────────────────────────────── -->
   <header class="topnav" id="topnav">
     <div class="container topnav-inner">
-      <a href="index.html" class="brand" aria-label="Nothing — back to top">
+      <a href="index.html" class="brand" aria-label="Nothing — home page">
         <svg aria-hidden="true"><use href="#n-mark"/></svg>
         <span class="wordmark">NOTHING</span>
       </a>
@@ -285,7 +309,7 @@
     <div class="container">
       <div class="foot-grid">
         <div>
-          <a href="index.html" class="brand" aria-label="Nothing — back to top"><svg aria-hidden="true"><use href="#n-mark"/></svg><span class="wordmark">NOTHING</span></a>
+          <a href="index.html" class="brand" aria-label="Nothing — home page"><svg aria-hidden="true"><use href="#n-mark"/></svg><span class="wordmark">NOTHING</span></a>
           <p class="tag">Notes, tasks, habits and money. One simple space.</p>
         </div>
         <div>
@@ -315,7 +339,7 @@
     var nav = document.getElementById('topnav');
     var toc = document.getElementById('toc');
     var wide = window.matchMedia('(min-width: 1025px)');
-    function fit() { if (wide.matches) toc.open = true; }
+    function fit() { toc.open = wide.matches; }   // open beside the text on wide screens, folded away on narrow ones
     fit(); wide.addEventListener && wide.addEventListener('change', fit);
     toc.addEventListener('click', function (e) {
       if (e.target.closest('summary') && wide.matches) e.preventDefault();   // the list stays open beside the text
@@ -323,12 +347,15 @@
     });
     var links = [].slice.call(toc.querySelectorAll('a'));
     var heads = links.map(function (a) { return document.getElementById(a.hash.slice(1)); });
+    // a contents jump parks its heading below the page's scroll-padding plus the heading's own scroll-margin
+    var reach = (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + (parseFloat(getComputedStyle(heads[0]).scrollMarginTop) || 0) + 8;
     var ticking = false;
     function spy() {
       ticking = false;
       nav.classList.toggle('is-scrolled', window.scrollY > 8);
-      var line = nav.offsetHeight + 96, pick = -1;
+      var line = Math.max(nav.offsetHeight + 96, reach), pick = -1;
       heads.forEach(function (h, n) { if (h.getBoundingClientRect().top <= line) pick = n; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) pick = heads.length - 1;   // the last sections can't scroll up to the line
       links.forEach(function (a, n) { if (n === pick) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     }
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });

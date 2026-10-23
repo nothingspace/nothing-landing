@@ -1,0 +1,12 @@
+# Everything committed here is published on nothingapp.live by GitHub Pages.
+
+# design hand-off and its QA kit (a second copy of the landing page that would fire the live GTM container)
+design/
+
+# local tooling and notes (GitHub Pages renders Markdown, so CLAUDE.md would become a public page)
+.agents/
+.claude/
+.n_base-version
+CLAUDE.md
+
+.DS_Store

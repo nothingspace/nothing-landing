@@ -12,6 +12,7 @@ Key facts:
 - Languages: fifteen — English, Arabic, Chinese (Simplified and Traditional), French, German, Hindi, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish, Thai and Vietnamese. Arabic reads right to left, and any language can switch to right-to-left.
 - Look: seven themes (Light, Teal Light, Forest, Dark, Night Blue, Amber Dark, Monochrome) or follow the system, plus a choice of font and text size.
 - Contact: contact@nothingapp.live
+- Website: [nothingapp.live](https://nothingapp.live/), the full product tour with app screenshots.
 
 ## Features
 
@@ -37,7 +38,3 @@ Key facts:
 
 - [Privacy Policy](https://nothingapp.live/privacy.html): how Nothing collects, uses and protects your information, including data shared with Google Gemini for AI features.
 - [Terms of Use](https://nothingapp.live/terms.html): the terms for using Nothing, including Nothing Pro subscriptions and AI data sharing.
-
-## Optional
-
-- [Home page](https://nothingapp.live/): the full product tour with app screenshots.
