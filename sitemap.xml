@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://nothingapp.live/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/feed-populated.webp</image:loc></image:image>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/fd-t1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/ac-r6.webp</image:loc></image:image>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/th-p1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/th-d1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/fin-x1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/ai-x4.webp</image:loc></image:image>
+    <image:image><image:loc>https://nothingapp.live/assets/screens/sh-r1.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nothingapp.live/privacy.html</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://nothingapp.live/terms.html</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+</urlset>

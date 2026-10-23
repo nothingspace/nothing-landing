@@ -1,0 +1,24 @@
+# nothingapp.live — every public page may be crawled and indexed.
+
+User-agent: *
+Allow: /
+
+# AI search, answer and assistant crawlers are welcome too (listed so the intent is explicit).
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://nothingapp.live/sitemap.xml
