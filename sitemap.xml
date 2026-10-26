@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nothingapp.live/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <image:image><image:loc>https://nothingapp.live/assets/screens/feed-populated.webp</image:loc></image:image>
     <image:image><image:loc>https://nothingapp.live/assets/screens/fd-t1.webp</image:loc></image:image>
     <image:image><image:loc>https://nothingapp.live/assets/screens/ac-r6.webp</image:loc></image:image>
@@ -13,11 +13,11 @@
     <image:image><image:loc>https://nothingapp.live/assets/screens/sh-r1.webp</image:loc></image:image>
   </url>
   <url>
-    <loc>https://nothingapp.live/privacy.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <loc>https://nothingapp.live/privacy</loc>
+    <lastmod>2026-10-26</lastmod>
   </url>
   <url>
-    <loc>https://nothingapp.live/terms.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <loc>https://nothingapp.live/terms</loc>
+    <lastmod>2026-10-26</lastmod>
   </url>
 </urlset>
