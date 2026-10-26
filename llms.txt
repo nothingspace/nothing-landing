@@ -36,5 +36,5 @@ Key facts:
 
 ## Legal
 
-- [Privacy Policy](https://nothingapp.live/privacy.html): how Nothing collects, uses and protects your information, including data shared with Google Gemini for AI features.
-- [Terms of Use](https://nothingapp.live/terms.html): the terms for using Nothing, including Nothing Pro subscriptions and AI data sharing.
+- [Privacy Policy](https://nothingapp.live/privacy): how Nothing collects, uses and protects your information, including data shared with Google Gemini for AI features.
+- [Terms of Use](https://nothingapp.live/terms): the terms for using Nothing, including Nothing Pro subscriptions and AI data sharing.
